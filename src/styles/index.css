@@ -1,6 +1,30 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "swiper/css";
+@import "swiper/css/free-mode";
+@import "swiper/css/navigation";
 
-/* Your own custom component styles */
+body{
+  @apply bg-dark text-gray-100;
+}
 
-@import 'tailwindcss/utilities';
+::-webkit-scrollbar {
+  @apply w-[10px] h-[10px];
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#666] rounded-2xl;
+  border: 1px solid #191a1f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[#777];
+}
+::-webkit-scrollbar-button {
+  @apply hidden;
+}
