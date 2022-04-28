@@ -4,22 +4,15 @@ import Sidebar from "@/components/Home/Sidebar";
 import SkeletonSlider from "@/components/Home/SkeletonSlider";
 import InView from "@/components/Shared/InView";
 import Skeleton from "@/components/Shared/Skeleton";
-import { getHome } from "@/services/home";
 import { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { GetStaticProps } from 'next'
-import { HomeSection } from "@/types";
+import { useState, useEffect, useCallback, useMemo, Fragment } from "react";
 import useFetchHome from "@/hooks/useFetchHome";
 
-interface HomeProps {
-  dataSSG: HomeSection[]
-}
-
-const Home: NextPage<HomeProps> = ({ dataSSG }) => {
+const Home: NextPage = () => {
   const router = useRouter();
-  const { dataCSR, setSize, hasNextPage } = useFetchHome();
+  const { data, setSize, hasNextPage, error } = useFetchHome();
   const [sidebarActive, setSidebarActive] = useState(false);
 
   useEffect(() => {
@@ -35,7 +28,6 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
       <div className='flex sm:hidden justify-between px-[4vw] mt-6'>
         <Link href='/'>
           <a className='flex items-center gap-2'><img className="h-8" src="/logo.png" alt="" /></a>
-          {/* <span>MovieMAX</span> */}
         </Link>
 
         <button onClick={() => setSidebarActive(!sidebarActive)}>
@@ -51,7 +43,26 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
 
         <div className="flex-grow px-[4vw] md:px-8 pb-8 pt-0 overflow-hidden flex flex-col items-stretch">
           {
-            dataSSG.map((section, index) =>
+            (!data || error) && (
+              <>
+                <div className="relative h-0 pb-[42%] mt-8">
+                  <Skeleton className="absolute top-0 left-0 w-full h-full rounded-2xl" />
+                </div>
+                {[...new Array(2)].map((_, index) => (
+                  <Fragment key={index}>
+                    <Skeleton className="mt-8 mb-5 h-6 w-full max-w-[200px]" />
+
+                    <div className="overflow-hidden">
+                      <SkeletonSlider />
+                    </div>
+                  </Fragment>
+                ))}
+              </>
+            )
+          }
+
+          {
+            data?.map((section, index) =>
               section.homeSectionType === "BANNER" ? (
                 <div
                   key={index}
@@ -59,7 +70,7 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
                 >
                   <BannerSlider
                     images={
-                      useMemo(() => (section.recommendContentVOList
+                      (section.recommendContentVOList
                         .map((item) => {
                           const searchParams = new URLSearchParams(
                             new URL(item.jumpAddress).search
@@ -80,7 +91,7 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
                           title: string;
                           image: string;
                           link: string;
-                        }[]) || [], [])
+                        }[]) || []
                     }
                   />
                 </div>
@@ -113,37 +124,9 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
           }
 
           {
-            dataCSR?.map((section, index) =>
-              <div key={index}>
-                <h1 className="text-2xl mb-3 mt-8 font-semibold">
-                  {section.homeSectionName.replace("on Loklok", "")}
-                </h1>
-
-                <SectionSlider
-                  images={section.recommendContentVOList.map((item) => {
-                    const searchParams = new URLSearchParams(
-                      new URL(item.jumpAddress).search
-                    );
-
-                    return {
-                      title: item.title,
-                      image: item.imageUrl,
-                      link:
-                        searchParams.get("type") === "0"
-                          ? `/movie/${searchParams.get("id")}`
-                          : `/tv/${searchParams.get("id")}`,
-                    };
-                  })}
-                  coverType={section.coverType}
-                />
-              </div>
-            )
-          }
-
-          {
             hasNextPage &&
             <InView onInView={handleInview}>
-              <Skeleton className="mt-8 mb-4 h-6 w-full max-w-[200px]" />
+              <Skeleton className="mt-8 mb-5 h-6 w-full max-w-[200px]" />
               <div className="overflow-hidden">
                 <SkeletonSlider />
               </div>
@@ -159,25 +142,6 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
       </div>
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const dataSSG = await getHome();
-
-    return {
-      props: {
-        dataSSG
-      },
-      revalidate: 3600,
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      notFound: true,
-      revalidate: true,
-    };
-  }
 }
 
 export default Home;
