@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { resizeImage } from '@/constants';
+import Image from '../Shared/Image';
 
 interface SliderProps {
   images: {
@@ -25,10 +26,11 @@ const BannerSlider: React.FC<SliderProps> = ({ images }) => (
         <Link href={item.link}>
           <a>
             <div className="w-full h-0 pb-[42%] relative">
-              <img
+              <Image
                 src={resizeImage(item.image, "800", "540")}
                 className="absolute top-0 left-0 w-full h-full object-cover opacity-75"
-                alt="Thumbnail" />
+                alt="Thumbnail"
+              />
               <h1 className="scale-100 font-semibold absolute left-[7%] bottom-[10%] text-xl md:text-3xl max-w-[86%] whitespace-nowrap overflow-hidden text-ellipsis">
                 {item.title}
               </h1>

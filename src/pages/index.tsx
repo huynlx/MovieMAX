@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect, useCallback, useMemo, Fragment } from "react";
 import useFetchHome from "@/hooks/useFetchHome";
+import SearchBox from "@/components/Search/SearchBox";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -50,7 +51,7 @@ const Home: NextPage = () => {
                 </div>
                 {[...new Array(2)].map((_, index) => (
                   <Fragment key={index}>
-                    <Skeleton className="mt-8 mb-5 h-6 w-full max-w-[200px]" />
+                    <Skeleton className="mt-8 mb-4 h-6 w-full max-w-[200px]" />
 
                     <div className="overflow-hidden">
                       <SkeletonSlider />
@@ -126,7 +127,8 @@ const Home: NextPage = () => {
           {
             hasNextPage &&
             <InView onInView={handleInview}>
-              <Skeleton className="mt-8 mb-5 h-6 w-full max-w-[200px]" />
+              <Skeleton className="mt-8 mb-4 h-6 w-full max-w-[200px]" />
+              
               <div className="overflow-hidden">
                 <SkeletonSlider />
               </div>
@@ -134,9 +136,9 @@ const Home: NextPage = () => {
           }
         </div>
 
-        <div className="flex-shrink-0 w-[320px] p-8 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
-          {/* <SearchBox /> */}
-          <h1 className="text-xl my-6">Top Searches</h1>
+        <div className="flex-shrink-0 w-[320px] p-8 pl-0 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
+          <SearchBox />
+          {/* <h1 className="text-xl my-6">Top Searches</h1> */}
           {/* <TopSearches /> */}
         </div>
       </div>

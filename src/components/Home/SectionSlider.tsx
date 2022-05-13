@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { memo } from 'react';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from '../Shared/Image';
 
 interface SliderProps {
   images: {
@@ -31,7 +32,7 @@ const SectionSlider: React.FC<SliderProps> = ({ images, coverType }) => {
           <Link href={item.link}>
             <a>
               <div className="overflow-hidden group">
-                <img
+                <Image
                   src={resizeImage(item.image, "200", "280")}
                   className="group-hover:brightness-75 transition duration-300 object-cover rounded-lg"
                   alt="Cover"
