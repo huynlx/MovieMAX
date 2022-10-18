@@ -1,31 +1,17 @@
+/* tailwindcss */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/* swiper */
 @import "swiper/css";
 @import "swiper/css/free-mode";
 @import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+/* nprogress */
 @import "nprogress/nprogress.css";
 
-body{
-  @apply bg-dark text-gray-100;
-}
-
-::-webkit-scrollbar {
-  @apply w-[10px] h-[10px];
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-[#666] rounded-2xl;
-  border: 1px solid #191a1f;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-[#777];
-}
-::-webkit-scrollbar-button {
-  @apply hidden;
-}
+/* styles */
+@import "./global.css";
+@import "./slide.css";

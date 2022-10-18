@@ -32,7 +32,7 @@ module.exports = {
     },
     "feat": {
       "description": "A new feature",
-      "emoji": "🎸",
+      "emoji": "✨",
       "value": "feat"
     },
     "fix": {

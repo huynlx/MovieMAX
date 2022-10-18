@@ -33,7 +33,7 @@ const SectionSlider: React.FC<SliderProps> = ({ images, coverType }) => {
             <a>
               <div className="overflow-hidden group">
                 <Image
-                  src={resizeImage(item.image, "200", "280")}
+                  src={resizeImage(item.image, '380', '532')}
                   className="group-hover:brightness-75 transition duration-300 object-cover rounded-lg"
                   alt="Cover"
                   width={IMAGE_CARD_SIZE[coverType || 1].width}

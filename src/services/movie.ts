@@ -6,8 +6,8 @@ export const getMovieDetail = async (
   id: string
 ): Promise<{
   data: DetailType;
-  sources: { quality: number; url: string }[];
-  subtitles: { language: string; url: string; lang: string }[];
+  sources: { quality: number; url: string; }[];
+  subtitles: { language: string; url: string; lang: string; }[];
 }> => {
   const data = (
     await axios2.get("https://web-api.netpop.app/cms/web/pc/movieDrama/get", {
@@ -20,6 +20,9 @@ export const getMovieDetail = async (
       }
     })
   ).data.data;
+
+  console.log('vao data', data);
+
 
   const sources = (
     await Promise.all(

@@ -7,4 +7,4 @@ export const getHome = async (page: number = 0): Promise<HomeSection[]> => (
       page,
     },
   })
-).data.data?.recommendItems.filter((item) => !item.bannerProportion);
+).data.data?.recommendItems.filter((item, i) => i === 0 || !item.bannerProportion);

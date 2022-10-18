@@ -21,8 +21,8 @@ const Home: NextPage = () => {
   }, [router]);
 
   const handleInview = useCallback(() => {
-    setSize(prev => prev + 1)
-  }, [])
+    setSize(prev => prev + 1);
+  }, []);
 
   return (
     <>
@@ -63,38 +63,37 @@ const Home: NextPage = () => {
           }
 
           {
-            data?.map((section, index) =>
-              section.homeSectionType === "BANNER" ? (
+            data?.map((section, index) => {
+              console.log(section);
+
+              return section.homeSectionType === "BANNER" ? (
                 <div
                   key={index}
                   className="overflow-hidden w-full mt-8"
                 >
                   <BannerSlider
-                    images={
-                      (section.recommendContentVOList
-                        .map((item) => {
-                          const searchParams = new URLSearchParams(
-                            new URL(item.jumpAddress).search
-                          );
+                    images={(section.recommendContentVOList
+                      .map((item) => {
+                        const searchParams = new URLSearchParams(
+                          new URL(item.jumpAddress).search
+                        );
 
-                          if (!searchParams.get("id")) return null;
+                        if (!searchParams.get("id"))
+                          return null;
 
-                          return {
-                            title: item.title,
-                            image: item.imageUrl,
-                            link:
-                              searchParams.get("type") === "0"
-                                ? `/movie/${searchParams.get("id")}`
-                                : `/tv/${searchParams.get("id")}`,
-                          };
-                        })
-                        .filter(Boolean) as {
-                          title: string;
-                          image: string;
-                          link: string;
-                        }[]) || []
-                    }
-                  />
+                        return {
+                          title: item.title,
+                          image: item.imageUrl,
+                          link: searchParams.get("type") === "0"
+                            ? `/movie/${searchParams.get("id")}`
+                            : `/tv/${searchParams.get("id")}`,
+                        };
+                      })
+                      .filter(Boolean) as {
+                        title: string;
+                        image: string;
+                        link: string;
+                      }[]) || []} />
                 </div>
               ) : (
                 <div key={index}>
@@ -111,16 +110,15 @@ const Home: NextPage = () => {
                       return {
                         title: item.title,
                         image: item.imageUrl,
-                        link:
-                          searchParams.get("type") === "0"
-                            ? `/movie/${searchParams.get("id")}`
-                            : `/tv/${searchParams.get("id")}`,
+                        link: searchParams.get("type") === "0"
+                          ? `/movie/${searchParams.get("id")}`
+                          : `/tv/${searchParams.get("id")}`,
                       };
                     })}
-                    coverType={section.coverType}
-                  />
+                    coverType={section.coverType} />
                 </div>
-              )
+              );
+            }
             )
           }
 
@@ -128,7 +126,7 @@ const Home: NextPage = () => {
             hasNextPage &&
             <InView onInView={handleInview}>
               <Skeleton className="mt-8 mb-4 h-6 w-full max-w-[200px]" />
-              
+
               <div className="overflow-hidden">
                 <SkeletonSlider />
               </div>
@@ -143,7 +141,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Home;
