@@ -12,7 +12,7 @@ const SkeletonSlider: FC = () => {
       slidesPerGroupAuto
       spaceBetween={20}
     >
-      {[...new Array(5)].map((_, index) => (
+      {[...new Array(10)].map((_, index) => (
         <SwiperSlide className="!w-[170px] !h-[238px]" key={index}>
           <Skeleton className="w-full h-full rounded-xl" />
         </SwiperSlide>

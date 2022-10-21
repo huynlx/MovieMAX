@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { AppProps } from 'next/app';
 import Router from "next/router";
 import NProgress from "nprogress";
+import { useEffect } from "react";
 
 NProgress.configure({
   showSpinner: false,
@@ -13,6 +14,7 @@ Router.events.on("routeChangeComplete", NProgress.done);
 Router.events.on("routeChangeError", NProgress.done);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+
   return (
     <>
       <Head>
@@ -21,7 +23,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       <Component {...pageProps} />
     </>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;

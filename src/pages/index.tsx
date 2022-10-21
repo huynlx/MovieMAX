@@ -1,6 +1,5 @@
 import BannerSlider from "@/components/Home/BannerSlider";
 import SectionSlider from "@/components/Home/SectionSlider";
-import Sidebar from "@/components/Home/Sidebar";
 import SkeletonSlider from "@/components/Home/SkeletonSlider";
 import InView from "@/components/Shared/InView";
 import Skeleton from "@/components/Shared/Skeleton";
@@ -10,14 +9,16 @@ import { useRouter } from "next/router";
 import { useState, useEffect, useCallback, useMemo, Fragment } from "react";
 import useFetchHome from "@/hooks/useFetchHome";
 import SearchBox from "@/components/Search/SearchBox";
+import Sidebar from "@/components/Home/Sidebar";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { data, setSize, hasNextPage, error } = useFetchHome();
-  const [sidebarActive, setSidebarActive] = useState(false);
 
+  // mobile
+  const [sidebarActive, setSidebarActive] = useState(false);
   useEffect(() => {
-    setSidebarActive(false); //mobile
+    setSidebarActive(false);
   }, [router]);
 
   const handleInview = useCallback(() => {
@@ -134,11 +135,11 @@ const Home: NextPage = () => {
           }
         </div>
 
-        <div className="flex-shrink-0 w-[320px] p-8 pl-0 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
+        {/* <div className="flex-shrink-0 w-[320px] p-8 pl-0 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
           <SearchBox />
-          {/* <h1 className="text-xl my-6">Top Searches</h1> */}
-          {/* <TopSearches /> */}
-        </div>
+          <h1 className="text-xl my-6">Top Searches</h1>
+          <TopSearches />
+        </div> */}
       </div>
     </>
   );

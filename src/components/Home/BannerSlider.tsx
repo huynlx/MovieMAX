@@ -34,7 +34,7 @@ const BannerSlider: React.FC<SliderProps> = ({ images }) => {
               <div className="w-full h-0 pb-[42%] relative">
                 <Image
                   src={resizeImage(item.image, "800", "540")}
-                  className="absolute top-0 left-0 w-full h-full object-cover opacity-75"
+                  className="absolute top-0 left-0 w-full h-full object-cover opacity-100"
                   alt="Thumbnail"
                 />
                 <h1 className="footer-shadow scale-100 font-semibold absolute text-xl md:text-3xl whitespace-nowrap overflow-hidden text-ellipsis flex items-center">
