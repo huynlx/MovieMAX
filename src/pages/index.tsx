@@ -161,6 +161,8 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { GetStaticProps } from 'next';
 import { HomeSection } from "@/types";
 import useFetchHome from "@/hooks/useFetchHome";
+import axios from "axios";
+import { test } from "@/services/test";
 
 interface HomeProps {
   dataSSG: HomeSection[];
@@ -176,7 +178,17 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
   }, [router]);
 
   const handleInview = useCallback(() => {
+    // The 'prev' always 0 at the first time
+    // if prev + 1 => fetch 1 page (page 1), next time => page 2 ...
+    // if prev + 2 => fetch 2 page (page 1, 2), next time => page 3, 4 ...
     setSize(prev => prev + 1);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const x = await test(1);
+      console.log(x);
+    })();
   }, []);
 
   return (

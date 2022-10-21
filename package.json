@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem next dev -p 3000",
     "build": "next build",
-    "start": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem next start -p 8080",
+    "start": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem next start -p 3333",
     "lint": "next lint",
     "deploy": "git push origin main",
     "rebase": "git rebase -i",
