@@ -9,7 +9,7 @@
     "lint": "next lint",
     "deploy": "git push origin main",
     "rebase": "git rebase -i",
-    "commit": "npx git-cz"
+    "push": "npx git-cz"
   },
   "dependencies": {
     "axios": "^0.26.1",

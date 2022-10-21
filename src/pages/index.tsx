@@ -168,7 +168,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ dataSSG }) => {
   const router = useRouter();
-  const { dataCSR, setSize, hasNextPage } = useFetchHome();
+  const { data: dataCSR, setSize, hasNextPage } = useFetchHome();
   const [sidebarActive, setSidebarActive] = useState(false);
 
   useEffect(() => {
