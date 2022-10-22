@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['img.netpop.app'],
+    domains: ["img.netpop.app"],
   },
-}
+};

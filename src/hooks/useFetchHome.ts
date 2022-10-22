@@ -1,15 +1,11 @@
-import home from "@/pages/api/home";
-import { getHome } from "@/services/home";
-import { test } from "@/services/test";
-import axios from "axios";
 import useSWRInfinite from "swr/infinite";
+import fetcher from '@/core/fetcher';
 
 const useFetchHome = () => {
   const getKey = (index: number) => `home-${index || 0}`; // if not setSize => go to 0, if setSize => go to 'index'
   const { data, error, setSize, ...rest } = useSWRInfinite(
     getKey,
-    // (key) => test(Number(key.split("-").slice(-1)[0])), //key = "home-?"
-    async (key) => (await axios.get('/api/home?page=' + Number(key.split("-").slice(-1)[0]))).data,
+    (key) => fetcher.getHome(key), // key = "home-?"
     { revalidateFirstPage: false }
   );
 

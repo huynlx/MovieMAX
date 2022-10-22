@@ -1,16 +1,21 @@
 import { getHome } from '@/services/home';
+import { NextRequest, NextResponse, NextMiddleware, NextFetchEvent } from 'next/server';
+import fetchAdapter from '@vespaiach/axios-fetch-adapter';
 import axios from '@/utils/axios';
-import { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log('vao day xem');
+export const middleware: NextMiddleware = async (req: NextRequest, ev: NextFetchEvent) => {
+  axios.defaults.adapter = fetchAdapter;
 
-  const { page } = req.query as { page: string; };
+  // Get the page from the url params
+  const urlParams = new URLSearchParams(req.nextUrl.search);
 
-  console.log(page);
-
+  const page = urlParams.get("page");
 
   const data = await getHome(Number(page));
 
-  res.send(data);
+  return NextResponse.json(data);
+};
+
+export const config = {
+  runtime: 'experimental-edge',
 };
