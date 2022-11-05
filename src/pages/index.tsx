@@ -2,6 +2,7 @@ import BannerSlider from "@/components/Home/BannerSlider";
 import SectionSlider from "@/components/Home/SectionSlider";
 import Sidebar from "@/components/Home/Sidebar";
 import SkeletonSlider from "@/components/Home/SkeletonSlider";
+import SearchBox from "@/components/Search/SearchBox";
 import InView from "@/components/Shared/InView";
 import Skeleton from "@/components/Shared/Skeleton";
 import useFetchHome from "@/hooks/useFetchHome";
@@ -36,7 +37,7 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
     <>
       <div className='flex sm:hidden justify-between px-[4vw] mt-6'>
         <Link href='/'>
-          <a className='flex items-center gap-2'><img className="h-8" src="/logo.png" alt="" /></a>
+          <a className='flex items-center gap-2'><img className="h-8" src="/static/images/logo.png" alt="" /></a>
           {/* <span>MovieMAX</span> */}
         </Link>
 
@@ -153,10 +154,10 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
           }
         </div>
 
-        <div className="flex-shrink-0 w-[320px] p-8 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
-          {/* <SearchBox /> */}
-          <h1 className="text-xl my-6">Top Searches</h1>
-          {/* <TopSearches /> */}
+        <div className="flex-shrink-0 w-[350px] p-8 pl-0 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
+          <SearchBox />
+          {/* <h1 className="text-xl my-6">Top Searches</h1> */}
+          {/* <TopSearch /> */}
         </div>
       </div>
     </>
