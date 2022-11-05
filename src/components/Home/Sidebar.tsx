@@ -21,8 +21,8 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarActive, setSidebarActive }) =>
       >
         <Link href="/" >
           <a className="flex gap-2 items-center">
-            <img className="h-12 sm:hidden xl:block" src="/logo.png" alt="Logo" />
-            <img className="w-6 h-7 hidden xl:hidden sm:block" src="/favicon.ico" alt="Logo" />
+            <img className="h-12 sm:hidden xl:block" src="/static/images/logo.png" alt="Logo" />
+            <img className="w-6 h-7 hidden xl:hidden sm:block" src="/static/icons/favicon.ico" alt="Logo" />
           </a>
           {/* <p className="font-semibold text-xl block sm:hidden xl:block">Movie Max</p> */}
         </Link>

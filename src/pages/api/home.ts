@@ -1,3 +1,6 @@
+/**
+ * Edge Runtime (experimental)
+ */
 // import { getHome } from '@/services/home';
 // import { NextRequest, NextResponse, NextMiddleware, NextFetchEvent } from 'next/server';
 // import fetchAdapter from '@vespaiach/axios-fetch-adapter';
@@ -20,6 +23,9 @@
 //   runtime: 'experimental-edge',
 // };
 
+/**
+ * Node.js Runtime
+ */
 import { getHome } from '@/services/home';
 import { NextApiRequest, NextApiResponse } from "next";
 

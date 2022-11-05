@@ -34,6 +34,7 @@ import Error404 from '@/components/Error/404';
 import Watch from '@/components/Watch';
 import { getMovieDetail } from '@/services/movie';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 import React from 'react';
 import useSWR from 'swr';
 
@@ -54,6 +55,12 @@ const Movie: NextPage<any> = ({ data, sources, subtitles, id }) => {
   //   );
   // }
 
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <Watch
       data={data}
@@ -61,6 +68,13 @@ const Movie: NextPage<any> = ({ data, sources, subtitles, id }) => {
       subtitles={subtitles}
     />
   );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -82,13 +96,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: true,
     };
   }
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
 };
 
 export default Movie;
