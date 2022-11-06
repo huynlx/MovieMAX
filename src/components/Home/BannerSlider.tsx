@@ -16,8 +16,6 @@ interface SliderProps {
 
 const BannerSlider: React.FC<SliderProps> = ({ images }) => {
 
-  console.log('vo day');
-
   return (
     <Swiper
       className="rounded-2xl overflow-hidden"

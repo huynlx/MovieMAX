@@ -9,6 +9,7 @@ interface MetaDataProps {
 }
 
 const MetaData: React.FunctionComponent<MetaDataProps> = ({ data, episodeIndex }) => {
+
   return (
     <>
       {
@@ -46,17 +47,18 @@ const MetaData: React.FunctionComponent<MetaDataProps> = ({ data, episodeIndex }
               <>
                 <h1 className="text-xl my-3">Episodes</h1>
                 <div className="flex gap-3 overflow-auto">
-                  {data.episodeVo.map((_, index) => (
-                    <Link
-                      href={`/tv/${data.id}?episode=${index + 1}`}
-                      key={index}
-                    >
-                      <a className={`px-4 py-[8px] bg-dark-lighten rounded hover:brightness-125 transition duration-300 ${index === episodeIndex ? "!bg-primary text-white" : ""
-                        }`}>
-                        {index + 1}
-                      </a>
-                    </Link>
-                  ))}
+                  {data.episodeVo.map((_, index) => {
+                    return (
+                      <Link
+                        href={`/tv/${data.id}-${index}`}
+                        key={index}
+                      >
+                        <a className={`px-4 py-[8px] bg-dark-lighten rounded hover:brightness-125 transition duration-300 ${index === episodeIndex ? "!bg-primary text-white" : ""}`}>
+                          {index + 1}
+                        </a>
+                      </Link>
+                    );
+                  })}
                 </div>
               </>
             )}

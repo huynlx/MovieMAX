@@ -19,7 +19,6 @@ const Image: FC<HTMLProps<HTMLImageElement> & ImageProps> = ({
 
   useEffect(() => {
     const handler = () => {
-      // console.log("loaded");
       setLoaded(true);
     };
 

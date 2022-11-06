@@ -17,9 +17,6 @@ export const getMovieDetail = async (
     })
   ).data.data;
 
-  console.log('vao data', data);
-
-
   const sources = (
     await Promise.all(
       data.episodeVo[0].definitionList.map(

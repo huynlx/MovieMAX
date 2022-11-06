@@ -1,9 +1,13 @@
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { DetailType } from '@/types';
+import dynamic from 'next/dynamic';
 import React, { FC, useEffect } from 'react';
-import DesktopPlayer from '../Player/Desktop';
 import Skeleton from '../Shared/Skeleton';
 import MetaData from './MetaData';
+
+const DesktopPlayer = dynamic(() => import('../Player/Desktop'), {
+  ssr: false,
+});
 
 interface WatchProps {
   data?: DetailType,

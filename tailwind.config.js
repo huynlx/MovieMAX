@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         dark: "#191A1F",
         "dark-lighten": "#27282e",
-        primary: "#DB202C",
+        primary: "#0D90F3",
       },
       gridTemplateColumns: {
         lg: "repeat(auto-fill, minmax(160px, 1fr))",
@@ -19,4 +19,4 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-}
+};

@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...response,
         id: movieId
       },
-      revalidate: 3600,
+      revalidate: 10,
     };
   } catch (error) {
     return {

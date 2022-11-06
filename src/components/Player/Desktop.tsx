@@ -1,12 +1,9 @@
+import { subtitleProxy } from '@/constants';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { formatVideoTime } from '@/utils';
-import dynamic from 'next/dynamic';
 import React, { FC, useEffect, useRef, useState } from 'react';
+import Player from 'react-hls-player/dist';
 import screenfull from 'screenfull';
-
-const Player = dynamic(() => import('react-hls-player/dist'), {
-  ssr: false,
-});
 
 interface PlayerProps {
   playerKey: string;
@@ -101,6 +98,9 @@ const DesktopPlayer: FC<PlayerProps> = ({ playerKey, sources, subtitles }) => {
     setVolumeLocal(Number(volume));
   }, [volume]);
 
+  console.log(pause);
+
+
   useEffect(() => {
     screenfull.on('change', () => {
       if (screenfull.isFullscreen) {
@@ -163,6 +163,20 @@ const DesktopPlayer: FC<PlayerProps> = ({ playerKey, sources, subtitles }) => {
     };
   }, []);
 
+  // var regex = /(?:http[s]*\:\/\/)*(.*?)\.(?=[^\/]*\..{2,5})/i;
+
+  // const domain = sources[quality].url.match(regex)[0];
+
+  // const finalSourceUrl = sources[quality].url.replace(domain, 'https://ali-cdn-play.');
+  // van de la cai auth-key => co the lay auth-key cua cai quality khac 
+  // cach thu 2 la dung revalidate on-demands
+
+  // console.log({
+  //   old: sources[quality].url,
+  //   new: finalSourceUrl,
+  //   cc: sources[quality].url.match(regex)
+  // });
+
   return (
     <div className="relative w-full h-0 pb-[56.25%]">
       <div
@@ -214,7 +228,7 @@ const DesktopPlayer: FC<PlayerProps> = ({ playerKey, sources, subtitles }) => {
               kind="subtitles"
               srcLang="sub"
               label="Subtitle"
-              // src={subtitleProxy(subtitles[subtitleIndex]?.url)}
+              src={subtitleProxy(subtitles[subtitleIndex]?.url)}
               default
             />
           )}
@@ -361,7 +375,10 @@ const DesktopPlayer: FC<PlayerProps> = ({ playerKey, sources, subtitles }) => {
                         <button
                           onClickCapture={() => {
                             setQuality(index);
-                            setPause(true);
+                            setTimeout(() => {
+                              playerRef.current.play();
+                            }, 0);
+                            // setPause(true);
                           }}
                           className={`text-sm relative text-gray-400 ${quality === index
                             ? "text-white before:absolute before:left-[-10px] before:top-1/2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-white before:rounded-full"
