@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: `https://ga-mobile-api.loklok.tv/cms/app`,
+  baseURL: process.env.NEXT_PUBLIC_APP_URL,
   headers: {
-    lang: "en",
-    versioncode: "11",
-    clienttype: "ios_jike_default",
+    lang: process.env.NEXT_PUBLIC_APP_EN_LANG,
+    versioncode: process.env.NEXT_PUBLIC_APP_VERSION_CODE,
+    clienttype: process.env.NEXT_PUBLIC_APP_CLIENT_TYPE,
   },
 });
 

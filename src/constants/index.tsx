@@ -27,7 +27,7 @@ export const MENU: MenuProps[] = [
     slug: '/search',
     icon: 'fas fa-search'
   },
-]
+];
 
 export const PROXY = "https://ezexpress.tk/";
 
@@ -37,7 +37,7 @@ export const resizeImage = (url: string, width = "", height = "") =>
     : `${url}?imageView2/1/w/${width}/h/${height}/format/webp/interlace/1/ignore-error/1/q/90!/format/webp`;
 
 export const subtitleProxy = (url: string) =>
-  `https://srt-to-vtt.vercel.app?url=${encodeURIComponent(url)}`;
+  `${process.env.NEXT_PUBLIC_APP_SUBTITLE}?url=${encodeURIComponent(url)}`;
 
 export const IMAGE_CARD_SIZE = {
   0: {

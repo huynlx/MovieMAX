@@ -7,6 +7,7 @@ import MetaData from './MetaData';
 
 const DesktopPlayer = dynamic(() => import('../Player/Desktop'), {
   ssr: false,
+  loading: () => <div className="relative w-full h-0 pb-[56.25%] bg-black" />
 });
 
 interface WatchProps {
@@ -73,15 +74,14 @@ const Watch: FC<WatchProps> = ({
               <div key={episodeIndex} className="w-full">
                 {
                   data && sources && subtitles ? (
-                    <>
-                      <DesktopPlayer
-                        playerKey={playerKey}
-                        sources={sources}
-                        subtitles={subtitles}
-                      />
-                    </>
+                    <DesktopPlayer
+                      playerKey={playerKey}
+                      sources={sources}
+                      subtitles={subtitles}
+                      data={data}
+                    />
                   ) : (
-                    <div className="w-full h-0 pb-[56.25%] relative">
+                    <div className="relative w-full h-0 pb-[56.25%] bg-black">
                       <Skeleton className="absolute top-0 left-0 w-full h-full" />
                     </div>
                   )

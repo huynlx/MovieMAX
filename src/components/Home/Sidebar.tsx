@@ -28,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarActive, setSidebarActive }) =>
         </Link>
 
         <div className='mt-0 sm:mt-4 xl:mt-0 block sm:flex flex-col gap-0 sm:gap-4 xl:block xl:gap-0'>
-          <p className='uppercase mt-10 mb-4 block sm:hidden xl:block text-gray-400'>Menu</p>
+          <p className='uppercase mt-10 mb-4 block sm:hidden xl:block text-gray-300'>Menu</p>
 
           <div className='flex flex-col items-stretch gap-3'>
             {
@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarActive, setSidebarActive }) =>
                   <Link href={item.slug}>
                     <a className={`flex items-center gap-2 transition ${router.pathname === item.slug
                       ? "text-primary border-r-4 border-primary hover:brightness-125" :
-                      'text-gray-400 hover:text-gray-300'
+                      ' text-gray-300 hover:text-white'
                       }`}>
                       <i className={`${item.icon} text-xl w-[24px]`}></i>
                       <p className="block sm:hidden xl:block">{item.name}</p>
@@ -48,13 +48,13 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarActive, setSidebarActive }) =>
             }
           </div>
 
-          <p className="uppercase mt-10 mb-4 block sm:hidden xl:block text-gray-400">Personal</p>
+          <p className="uppercase mt-10 mb-4 block sm:hidden xl:block text-gray-300">Personal</p>
 
           {!currentUser ? (
             <Link
               href={`/sign-in?redirect=${encodeURIComponent(router.pathname)}`}
             >
-              <a className="flex items-center cursor-pointer gap-2 transition text-gray-400 hover:text-gray-300">
+              <a className="flex items-center cursor-pointer gap-2 transition text-gray-300 hover:text-white">
                 <i className="fas fa-sign-in-alt text-xl w-[24px]"></i>
                 <p className="block sm:hidden xl:block">Sign In</p>
               </a>

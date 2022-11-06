@@ -154,11 +154,11 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
           }
         </div>
 
-        <div className="flex-shrink-0 w-[350px] p-8 pl-0 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
+        {/* <div className="flex-shrink-0 w-[350px] p-8 pl-0 sticky top-0 h-screen scrollbar overflow-hidden overflow-y-auto hidden md:block">
           <SearchBox />
-          {/* <h1 className="text-xl my-6">Top Searches</h1> */}
-          {/* <TopSearch /> */}
-        </div>
+          <h1 className="text-xl my-6">Top Searches</h1>
+          <TopSearch />
+        </div> */}
       </div>
     </>
   );
