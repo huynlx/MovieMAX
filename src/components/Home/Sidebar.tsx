@@ -11,12 +11,11 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ sidebarActive, setSidebarActive }) => {
   const router = useRouter();
-
   const currentUser = useStore((state) => state.currentUser);
 
   return (
     <>
-      <div className={`flex-shrink-0 sm:sticky left-auto right-full sm:!right-0 sm:!left-0 fixed top-0 flex flex-col items-stretch py-10 pl-5 xl:pl-10 pr-0 w-[90vw] max-w-[288px] sm:max-w-none sm:w-16 xl:w-72 border-r border-gray-800 h-screen overflow-y-auto z-10 bg-dark sm:bg-transparent sm:!translate-x-0 transition-all duration-500 ${sidebarActive ? "translate-x-full" : "translate-x-0"
+      <div className={`flex-shrink-0 sm:sticky left-auto right-full sm:!right-0 sm:!left-0 fixed top-0 flex flex-col items-stretch py-10 pl-5 xl:pl-10 pr-0 w-[90vw] max-w-[288px] sm:max-w-none sm:w-16 xl:w-72 border-r-2 border-gray-800 h-screen overflow-y-auto z-10 bg-dark sm:bg-transparent sm:!translate-x-0 transition-all duration-500 ${sidebarActive ? "translate-x-full" : "translate-x-0"
         }`}
       >
         <Link href="/" >

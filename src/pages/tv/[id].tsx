@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...response,
         episodeIndex: Number(episodeIndex)
       },
-      revalidate: 10,
+      revalidate: 3600,
     };
   } catch (error) {
     return {

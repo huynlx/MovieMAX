@@ -18,6 +18,16 @@ class Fetcher {
 
     }
   }
+
+  async getSearch(keyword: string) {
+    try {
+      let { data } = await axios.get('/api/search?q=' + String(keyword));
+
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Fetcher();

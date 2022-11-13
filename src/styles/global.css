@@ -1,5 +1,5 @@
 body {
-  @apply bg-dark text-gray-100;
+  @apply bg-wholepage text-gray-100;
 }
 
 ::-webkit-scrollbar {
@@ -20,4 +20,8 @@ body {
 }
 ::-webkit-scrollbar-button {
   @apply hidden;
+}
+
+#nprogress .bar {
+  @apply bg-primary;
 }

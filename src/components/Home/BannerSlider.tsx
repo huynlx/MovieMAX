@@ -1,8 +1,8 @@
+import { resizeImage } from '@/constants';
 import Link from 'next/link';
 import React, { memo } from 'react';
-import { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { resizeImage } from '@/constants';
 import Image from '../Shared/Image';
 
 interface SliderProps {
@@ -19,11 +19,15 @@ const BannerSlider: React.FC<SliderProps> = ({ images }) => {
   return (
     <Swiper
       className="rounded-2xl overflow-hidden"
-      modules={[Navigation, Pagination]}
-      navigation
+      modules={[Navigation, Pagination, Autoplay]}
+      navigation={false}
       pagination
-      loop
+      loop={true}
       slidesPerView={1}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false
+      }}
     >
       {images.map((item) => (
         <SwiperSlide key={item.image}>
@@ -35,8 +39,8 @@ const BannerSlider: React.FC<SliderProps> = ({ images }) => {
                   className="absolute top-0 left-0 w-full h-full object-cover opacity-100"
                   alt="Thumbnail"
                 />
-                <h1 className="footer-shadow scale-100 font-semibold absolute text-xl md:text-3xl whitespace-nowrap overflow-hidden text-ellipsis flex items-center">
-                  {item.title}
+                <h1 className="footer-shadow scale-100 font-semibold absolute text-xl md:text-6xl whitespace-nowrap overflow-hidden text-ellipsis flex items-center">
+                  {/* {item.title} */}
                 </h1>
               </div>
             </a>

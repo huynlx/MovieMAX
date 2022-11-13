@@ -89,7 +89,7 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
                 </div>
               ) : (
                 <div key={index}>
-                  <h1 className="text-2xl mb-3 mt-8 font-semibold">
+                  <h1 className="text-2xl mb-1 mt-8 font-semibold text-orange-300">
                     {section.homeSectionName.replace("on Loklok", "")}
                   </h1>
 
@@ -118,7 +118,7 @@ const Home: NextPage<HomeProps> = ({ dataSSG }) => {
           {
             dataCSR?.map((section, index) =>
               <div key={index}>
-                <h1 className="text-2xl mb-3 mt-8 font-semibold">
+                <h1 className="text-2xl mb-1 mt-8 font-semibold text-orange-300">
                   {section.homeSectionName.replace("on Loklok", "")}
                 </h1>
 

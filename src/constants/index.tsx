@@ -31,7 +31,7 @@ export const MENU: MenuProps[] = [
 
 export const PROXY = "https://ezexpress.tk/";
 
-export const resizeImage = (url: string, width = "", height = "") =>
+export const resizeImage = (url: string, width: string | number = "", height: string | number = "") =>
   url.startsWith("https://graph.facebook.com/")
     ? url
     : `${url}?imageView2/1/w/${width}/h/${height}/format/webp/interlace/1/ignore-error/1/q/90!/format/webp`;
@@ -46,7 +46,7 @@ export const IMAGE_CARD_SIZE = {
   },
   1: {
     width: 170,
-    height: 238,
+    height: 240,
   },
 };
 

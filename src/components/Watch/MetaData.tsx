@@ -21,8 +21,8 @@ const MetaData: React.FunctionComponent<MetaDataProps> = ({ data, episodeIndex }
                     href={`/tv/${data.id}-${index}`}
                     key={index}
                   >
-                    <a className={`px-4 py-[8px] bg-dark-lighten rounded hover:brightness-125 transition duration-300 ${index === episodeIndex ? "!bg-primary text-white" : ""}`}>
-                      {index + 1}
+                    <a className={`px-5 py-[8px] bg-dark-lighten rounded hover:brightness-125 transition duration-300 ${index === episodeIndex ? "!bg-primary text-white" : ""}`}>
+                      Ep.{index + 1}
                     </a>
                   </Link>
                 );
@@ -38,7 +38,7 @@ const MetaData: React.FunctionComponent<MetaDataProps> = ({ data, episodeIndex }
         }
 
         <section id='infomation' className='flex gap-[20px] mt-1 items-center'>
-          <img src={data?.coverVerticalUrl} alt="verti" width={210} height={294} />
+          <img src={data?.coverVerticalUrl} className=' rounded-lg' alt="verti" width={210} height={294} />
 
           <div className="flex flex-col gap-[10px]">
             <h1 className="text-3xl">{data?.name}</h1>

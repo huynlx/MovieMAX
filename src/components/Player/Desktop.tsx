@@ -3,7 +3,7 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import { DetailType } from '@/types';
 import { formatVideoTime } from '@/utils';
 import { useRouter } from 'next/router';
-import React, { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import Player from 'react-hls-player/dist';
 import screenfull from 'screenfull';
 

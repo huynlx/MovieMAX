@@ -15,14 +15,16 @@ interface SliderProps {
 }
 
 const SectionSlider: React.FC<SliderProps> = ({ images, coverType }) => {
+
   return (
     <Swiper
       modules={[FreeMode, Navigation]}
-      navigation
+      navigation={false}
       slidesPerView={'auto'}
       slidesPerGroupAuto
       spaceBetween={20}
       freeMode
+      className='swiper-section'
     >
       {images.map((item) => (
         <SwiperSlide
@@ -31,15 +33,15 @@ const SectionSlider: React.FC<SliderProps> = ({ images, coverType }) => {
         >
           <Link href={item.link}>
             <a>
-              <div className="overflow-hidden group">
+              <div className="group">
                 <Image
                   src={resizeImage(item.image, '380', '532')}
-                  className="group-hover:brightness-75 transition duration-300 object-cover rounded-lg"
+                  className="thumbnail group-hover:brightness-100 transition duration-300 object-cover rounded-lg"
                   alt="Cover"
                   width={IMAGE_CARD_SIZE[coverType || 1].width}
                   height={IMAGE_CARD_SIZE[coverType || 1].height}
                 />
-                <h1 className="group-hover:text-primary font-semibold transition duration-300 mt-2 pb-1 px-2 m-0 max-w-full whitespace-nowrap overflow-hidden text-ellipsis">
+                <h1 className="group-hover:text-primary text-center font-semibold transition duration-300 mt-3 pb-1 px-2 m-0 max-w-full whitespace-nowrap overflow-hidden text-ellipsis">
                   {item.title}
                 </h1>
               </div>

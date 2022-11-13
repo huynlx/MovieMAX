@@ -17,17 +17,17 @@ const SearchBox: FC<SearchBoxProps> = ({ autoFocus }) => {
   const navigate = useRouter();
 
   useEffect(() => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    // if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    setSuggestions([]);
+    // setSuggestions([]);
 
-    if (!inputValue.trim()) return;
+    // if (!inputValue.trim()) return;
 
-    timeoutRef.current = setTimeout(async () => {
-      const data = await searchKeywords(inputValue.trim());
+    // timeoutRef.current = setTimeout(async () => {
+    //   const data = await searchKeywords(inputValue.trim());
 
-      setSuggestions(data.map((item) => htmlToText(item)));
-    }, 500);
+    //   setSuggestions(data.map((item) => htmlToText(item)));
+    // }, 500);
   }, [inputValue]);
 
   const handleFormSubmit = (e: FormEvent) => {
@@ -66,8 +66,8 @@ const SearchBox: FC<SearchBoxProps> = ({ autoFocus }) => {
             >
               <button
                 className={`text-left p-2 w-full ${index !== suggestions.length - 1
-                    ? "border-b border-gray-500"
-                    : ""
+                  ? "border-b border-gray-500"
+                  : ""
                   }`}
               >
                 {suggestion}

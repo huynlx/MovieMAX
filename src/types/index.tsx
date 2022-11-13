@@ -1,13 +1,13 @@
 export interface RoutesProps {
   path: string,
   name: string,
-  component: React.ComponentType<{}>
+  component: React.ComponentType<{}>;
 }
 
 export interface MenuProps {
   name: string,
   slug: string,
-  icon: string
+  icon: string;
 }
 
 export interface UserProps {
@@ -20,7 +20,7 @@ export interface UserProps {
 export interface PersonalProps {
   name: string,
   slug: string,
-  icon: string
+  icon: string;
 }
 
 export interface HomeSection {
@@ -45,7 +45,7 @@ export interface HomeSection {
 
 export interface DetailType {
   aliasName: string;
-  areaList: { id: number; name: string }[];
+  areaList: { id: number; name: string; }[];
   areaNameList: string[];
   category: number;
   collect: boolean;
@@ -126,3 +126,39 @@ export interface DetailType {
   updateInfo?: any;
   year: number;
 }
+
+export interface TopSearch {
+  cover: string;
+  domainType: number;
+  id: string;
+  title: string;
+}
+export interface SearchResultItem {
+  areas: {
+    id: number;
+    name: string;
+  }[];
+  categoryTag: {
+    id: number;
+    name: string;
+  }[];
+  coverHorizontalUrl: string;
+  coverVerticalUrl: string;
+  domainType: number;
+  dramaType: {
+    code: string;
+    name: string;
+  };
+  duration: string;
+  id: string;
+  name: string;
+  releaseTime: string;
+  sort: string;
+  upInfo: {
+    enable: boolean;
+    upId: number;
+    upImgUrl: string;
+    upName: string;
+  };
+}
+
